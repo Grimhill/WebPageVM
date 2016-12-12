@@ -1,0 +1,62 @@
+﻿@model WebIntVM.Models.CreateNewModel
+@{
+    ViewBag.Title = "Description";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+        @using (Html.BeginForm("Create", "Home"))
+        {
+            <div>
+                @Html.Label("Choose dop soft")
+                @Html.CheckBoxFor(m => m.FirstSoft) @Html.Label("Skype")
+                @Html.CheckBoxFor(m => m.SecondSoft) @Html.Label("winrar")
+                @Html.CheckBoxFor(m => m.ThirdSoft) @Html.Label("Notepad")
+            </div>
+            
+            <div>
+            @Html.DropDownListFor(m => m.VirtualMachineSelected, new SelectList(
+                new List<Object> {
+                new { value = "Windows Server 2012 R2 Datacenter" , text = "Windows Server 2012 R2 Datacenter" },
+                new { value = "Windows Server 2008" , text = "Windows Server 2008" },
+                }, "value", "text", 2))
+
+            @Html.DropDownListFor(m => m.RegionSelected, new SelectList(
+                new List<Object> {
+                new { value = "West Europe" , text = "West Europe"  },
+                new { value = "North Europe" , text = "North Europe" },
+                }, "value", "text", 2))
+
+             @Html.DropDownListFor(m => m.VMSize, new SelectList(
+             new List<Object> {
+             new { value = "small" , text = "small"  },
+             new { value = "medium" , text = "medium" },
+             }, "value", "text", 2))
+            </div>
+            
+            <div>
+                @Html.LabelFor(m => m.VirtualMachineName)
+                @Html.TextBoxFor(m => m.VirtualMachineName)
+                @Html.LabelFor(m => m.AdminUser)
+                @Html.TextBoxFor(m => m.AdminUser)
+                @Html.LabelFor(m => m.Password)
+                @Html.TextBoxFor(m => m.Password)
+            </div>
+                
+            <div>
+                <!--<a href="https://manage.windowsazure.com/publishsettings/index?client=vs&schemaversion=2.0&whr=azure.com ">obtain publishsettings</a>-->
+            </div>
+            <input type="submit" value="Create" />
+    
+        }
+                
+</body>
+</html>
+
+
